@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Radio Paradise - Now Playing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 15px;
+            width: 100%;
+            max-width: 320px;
+            margin: auto;
+            text-align: center;
+        }
+        .cover {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .artist, .album {
+            font-size: 1em;
+            color: #bbbbbb;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="cover" class="cover" src="" alt="Cover Art">
+        <div class="title" id="title">Cargando...</div>
+        <div class="artist" id="artist"></div>
+        <div class="album" id="album"></div>
+    </div>
+
+    <script>
+        async function fetchNowPlaying() {
+            try {
+                const res = await fetch('https://api.radioparadise.com/api/now_playing?chan=0');
+                const data = await res.json();
+                document.getElementById('title').textContent = data.title;
+                document.getElementById('artist').textContent = data.artist;
+                document.getElementById('album').textContent = data.album;
+                document.getElementById('cover').src = data.cover_med;
+            } catch (e) {
+                document.getElementById('title').textContent = "No se pudo cargar la canción.";
+            }
+        }
+
+        fetchNowPlaying();
+        setInterval(fetchNowPlaying, 15000); // actualizar cada 15 segundos
+    </script>
+</body>
+</html>
