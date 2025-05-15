@@ -3,7 +3,7 @@
 Este es un pequeño widget HTML que muestra en tiempo real la canción que suena en [Radio Paradise](https://radioparadise.com).
 
 ## 🔗 Accede al widget en vivo:
-👉 [Abrir Radio Paradise Widget](https://anonimouselixirrtn.github.io/radioparadise/radio-paradise-widget.html)
+👉 Abrir Radio Paradise Widget (deshabilitado)
 
 ## 🎧 ¿Qué hace?
 - Muestra la canción actual que suena en Radio Paradise
